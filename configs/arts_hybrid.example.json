@@ -1,0 +1,35 @@
+{
+  "decision_policy": "hybrid",
+  "leaf_weighting": "direct_leaf_global_v1",
+  "budget": 16,
+  "max_depth": 3,
+  "gamma": 0.85,
+  "k_calibration": 6,
+  "n_candidates_per_node": 10,
+  "tau_scor": 0.8,
+  "max_regen_attempts": 4,
+  "margin": 0.0,
+  "low_distinct_threshold": 0.00005,
+  "tau_cov": 1.0,
+  "lambda_red": 0.05,
+  "lambda_size": 0.0,
+  "min_children": 3,
+  "generator_model": "GLM-4.7-Flash",
+  "generator_base_url": "https://generator.example/v1",
+  "generator_api_key_env": "GENERATOR_API_KEY",
+  "generator_temperature": 0.2,
+  "coverage_check": true,
+  "max_final_repair_attempts": 2,
+  "calibration_response_generators": [
+    {"model": "Qwen3-30B-A3B-Instruct-2507", "quality": "strong", "base_url": "https://strong.example/v1", "api_key_env": "STRONG_API_KEY"},
+    {"model": "Qwen3-30B-A3B-Instruct-2507", "quality": "strong", "prompt_modifier": "be brief, omit examples", "base_url": "https://strong.example/v1", "api_key_env": "STRONG_API_KEY"},
+    {"model": "Llama-3.1-70B-Instruct", "quality": "medium", "base_url": "https://medium.example/v1", "api_key_env": "MEDIUM_API_KEY"},
+    {"model": "Llama-3.1-70B-Instruct", "quality": "medium", "prompt_modifier": "verbose with elaboration", "base_url": "https://medium.example/v1", "api_key_env": "MEDIUM_API_KEY"},
+    {"model": "Mistral-7B-Instruct-v0.2", "quality": "weak", "base_url": "https://weak.example/v1", "api_key_env": "WEAK_API_KEY"},
+    {"model": "Mistral-7B-Instruct-v0.2", "quality": "weak", "prompt_modifier": "careless with one minor inaccuracy", "base_url": "https://weak.example/v1", "api_key_env": "WEAK_API_KEY"}
+  ],
+  "calibration_judges": [
+    {"model": "Qwen2.5-72B-Instruct", "base_url": "https://judge-a.example/v1", "api_key_env": "JUDGE_A_API_KEY"},
+    {"model": "Llama-3.3-70B-Instruct", "base_url": "https://judge-b.example/v1", "api_key_env": "JUDGE_B_API_KEY"}
+  ]
+}
